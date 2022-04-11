@@ -24,6 +24,14 @@ const App = () => {
 		setDeadline(0);
 	};
 
+	const completeTask = (taskToDelete: string): void => {
+		setTodo(
+			todo.filter((todoItem) => {
+				return todoItem.task !== taskToDelete;
+			})
+		);
+	};
+
 	return (
 		<div className="App">
 			<div className="header">
@@ -47,7 +55,13 @@ const App = () => {
 			</div>
 			<div className="todoList">
 				{todo.map((todoItem: ITask, key: number) => {
-					return <TodoTask key={key} todoItem={todoItem} />;
+					return (
+						<TodoTask
+							key={key}
+							todoItem={todoItem}
+							completeTask={completeTask}
+						/>
+					);
 				})}
 			</div>
 		</div>

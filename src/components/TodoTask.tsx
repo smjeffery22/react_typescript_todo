@@ -4,16 +4,17 @@ import { ITask } from '../Interfaces';
 // interface for props is included in each component file
 interface Props {
 	todoItem: ITask;
+	completeTask(taskToDelete: string): void;
 }
 
-const TodoTask = ({ todoItem }: Props) => {
+const TodoTask = ({ todoItem, completeTask }: Props) => {
 	return (
 		<div className="task">
 			<div className="content">
 				<span>{todoItem.task}</span>
 				<span>{todoItem.deadline}</span>
 			</div>
-			<button>X</button>
+			<button onClick={() => completeTask(todoItem.task)}>X</button>
 		</div>
 	);
 };
