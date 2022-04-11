@@ -1,6 +1,11 @@
+import { useState } from 'react';
 import './App.css';
 
 const App = () => {
+	const [task, setTask] = useState<string>('');
+	const [deadline, setDeadline] = useState<number>(0);
+	const [todo, setTodo] = useState([]);
+
 	return (
 		<div className="App">
 			<div className="header">
@@ -13,6 +18,6 @@ const App = () => {
 			<div className="todoList"></div>
 		</div>
 	);
-}
+};
 
 export default App;
