@@ -1,6 +1,7 @@
 import { useState, ChangeEvent } from 'react';
 import { ITask } from './Interfaces';
 import './App.css';
+import TodoTask from './components/TodoTask';
 
 const App = () => {
 	const [task, setTask] = useState<string>('');
@@ -20,7 +21,7 @@ const App = () => {
 
 		setTodo([...todo, newTask]);
 		setTask('');
-    setDeadline(0);
+		setDeadline(0);
 	};
 
 	return (
@@ -44,7 +45,11 @@ const App = () => {
 				</div>
 				<button onClick={addTask}>Add Task</button>
 			</div>
-			<div className="todoList"></div>
+			<div className="todoList">
+				{todo.map((todoItem: ITask, key: number) => {
+					return <TodoTask key={key} todoItem={todoItem} />;
+				})}
+			</div>
 		</div>
 	);
 };
